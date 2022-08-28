@@ -12,7 +12,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 /**
- * DTO referente ao objeto de anúncios
+ * DTO referente ao objeto de Anúncios
  */
 public class AnuncioDTO {
     @Getter private Long id;

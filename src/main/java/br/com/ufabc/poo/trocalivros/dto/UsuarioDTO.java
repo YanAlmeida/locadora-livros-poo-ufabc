@@ -5,7 +5,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 /**
- * DTO referente ao objeto de Usuario
+ * DTO referente ao objeto de Usuário
  */
 public class UsuarioDTO {
     @Getter @Setter private String username;

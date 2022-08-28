@@ -10,7 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Entidade referente aos Anuncios
+ * Entidade referente aos Anúncios
  */
 @Entity
 public class Anuncio {

@@ -11,7 +11,7 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 
 /**
- * Classe referente a entidade do Usuario
+ * Classe referente a entidade do Usuário
  */
 @Entity
 public class Usuario {
