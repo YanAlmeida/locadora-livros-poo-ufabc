@@ -1,6 +1,7 @@
 package br.com.ufabc.poo.trocalivros.controller;
 
 import br.com.ufabc.poo.trocalivros.dto.AnuncioDTO;
+import br.com.ufabc.poo.trocalivros.dto.AnuncioForm;
 import br.com.ufabc.poo.trocalivros.dto.UsuarioForm;
 import br.com.ufabc.poo.trocalivros.model.Anuncio;
 import br.com.ufabc.poo.trocalivros.model.Usuario;
@@ -25,9 +26,10 @@ public class AnuncioController {
      * @return Objeto do novo anúncio
      */
     @PostMapping("/anuncios")
-    public AnuncioDTO createAnuncio(@RequestBody Anuncio newAnuncio, @RequestHeader(value="AuthToken") String token){
+    public AnuncioDTO createAnuncio(@RequestBody AnuncioForm newAnuncio, @RequestHeader(value="AuthToken") String token){
         AutenticacaoService.verifyToken(token);
-        return AnuncioDTO.converterAnuncio(anuncioService.createAnuncio(newAnuncio));
+        Anuncio anuncio = newAnuncio.toAnuncio();
+        return AnuncioDTO.converterAnuncio(anuncioService.createAnuncio(anuncio));
     }
 
     /**
@@ -38,10 +40,12 @@ public class AnuncioController {
      * @return Objeto do anúncio atualizado
      */
     @PutMapping("/anuncios/{id}")
-    public AnuncioDTO updateAnuncio(@PathVariable Long id, @RequestBody Anuncio updatedAnuncio,
+    public AnuncioDTO updateAnuncio(@PathVariable Long id, @RequestBody AnuncioForm updatedAnuncio,
                                     @RequestHeader(value="AuthToken") String token) {
         AutenticacaoService.verifyToken(token);
-        return AnuncioDTO.converterAnuncio(anuncioService.updateAnuncio(id, updatedAnuncio));
+        Anuncio anuncio = updatedAnuncio.toAnuncio();
+        anuncio.setId(updatedAnuncio.getId());
+        return AnuncioDTO.converterAnuncio(anuncioService.updateAnuncio(id, anuncio));
     }
 
     /**
