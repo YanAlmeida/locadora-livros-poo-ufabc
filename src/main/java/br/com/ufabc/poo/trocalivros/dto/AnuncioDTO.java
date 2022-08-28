@@ -7,6 +7,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import java.math.BigDecimal;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -25,14 +26,14 @@ public class AnuncioDTO {
 
     @Getter @Setter private List<String> categorias;
 
-    @Getter @Setter private UsuarioDTO usuarioCriador;
+    @Getter @Setter private String usuarioCriador;
 
     @Getter @Setter private List<UsuarioDTO> usuariosInteressados;
 
     @Getter @Setter private Boolean active;
 
     public AnuncioDTO(Long id, String title, String description, BigDecimal price, String condition,
-                      List<Imagem> imagens, List<String> categorias, UsuarioDTO usuarioCriador,
+                      List<Imagem> imagens, List<String> categorias, String usuarioCriador,
                       List<UsuarioDTO> usuariosInteressados, Boolean active) {
         this.id = id;
         this.title = title;
@@ -50,7 +51,7 @@ public class AnuncioDTO {
         return new AnuncioDTO(anuncio.getId(), anuncio.getTitle(),
                 anuncio.getDescription(), anuncio.getPrice(),
                 anuncio.getCondition(), anuncio.getImagens(),
-                anuncio.getCategorias(), UsuarioDTO.converterUsuario(anuncio.getUsuarioCriador()),
+                anuncio.getCategorias(), anuncio.getUsuarioCriador(),
                 anuncio.getUsuariosInteressados().stream().
                         map(UsuarioDTO::converterUsuario).collect(Collectors.toList()), anuncio.getActive());
     }

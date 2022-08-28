@@ -6,6 +6,7 @@ import org.hibernate.annotations.Cascade;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -30,11 +31,9 @@ public class Anuncio {
     @ElementCollection(targetClass = String.class)
     @Getter @Setter private List<String> categorias;
 
-    @OneToOne(cascade = CascadeType.REFRESH)
-    @JoinColumn(name = "usuario_criador_username")
-    @Getter @Setter private Usuario usuarioCriador;
+    @Getter @Setter private String usuarioCriador;
 
-    @OneToMany(cascade = CascadeType.REFRESH)
+    @OneToMany(orphanRemoval = true, cascade = {CascadeType.ALL}, fetch = FetchType.LAZY)
     @ElementCollection(targetClass = Usuario.class)
     @Getter @Setter private List<Usuario> usuariosInteressados;
 
@@ -42,7 +41,7 @@ public class Anuncio {
 
     public Anuncio() {}
 
-    public Anuncio(String title, String description, BigDecimal price, String condition, List<Imagem> imagens, List<String> categorias, Usuario usuarioCriador, List<Usuario> usuariosInteressados, Boolean active) {
+    public Anuncio(String title, String description, BigDecimal price, String condition, List<Imagem> imagens, List<String> categorias, String usuarioCriador, List<Usuario> usuariosInteressados, Boolean active) {
         this.title = title;
         this.description = description;
         this.price = price;

@@ -3,8 +3,12 @@ package br.com.ufabc.poo.trocalivros.model;
 import lombok.Getter;
 import lombok.Setter;
 
+import java.util.List;
+
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 
 @Entity
 public class Usuario {
@@ -14,7 +18,7 @@ public class Usuario {
     @Getter @Setter private String password;
     @Getter @Setter private String name;
     @Getter @Setter private Boolean active;
-
+    
     public Usuario() {}
 
     public Usuario(String username, String email, String password, String name, Boolean active) {
