@@ -4,6 +4,9 @@ import br.com.ufabc.poo.trocalivros.model.Usuario;
 import lombok.Getter;
 import lombok.Setter;
 
+/**
+ * DTO referente ao objeto de Usuario
+ */
 public class UsuarioDTO {
     @Getter @Setter private String username;
     @Getter @Setter private String email;
@@ -17,6 +20,11 @@ public class UsuarioDTO {
         this.active = active;
     }
 
+    /**
+     * Método para conversão da entidade Usuário para a DTO UsuarioDTO
+     * @param usuario Entidade Usuario a ser convertida
+     * @return Objeto convertido para UsuarioDTO
+     */
     public static UsuarioDTO converterUsuario(Usuario usuario) {
         return new UsuarioDTO(usuario.getUsername(), usuario.getEmail(), usuario.getName(), usuario.getActive());
     }

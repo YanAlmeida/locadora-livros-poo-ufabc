@@ -4,6 +4,9 @@ import br.com.ufabc.poo.trocalivros.model.Usuario;
 import lombok.Getter;
 import lombok.Setter;
 
+/**
+ * Classe para representar o formulário de cadastro de usuário
+ */
 public class UsuarioForm {
 
     @Getter @Setter private String username;
@@ -20,6 +23,10 @@ public class UsuarioForm {
         this.active = active;
     }
 
+    /**
+     * Método responsável para converter de UsuarioForm para Usuario
+     * @return Objeto convertido para Usuario
+     */
     public Usuario toUsuario() {
         return new Usuario(username, email, password, name, active);
     }

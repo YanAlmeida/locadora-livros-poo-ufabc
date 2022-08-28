@@ -8,8 +8,15 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
 
+/**
+ * Classe referente ao token de autenticação
+ */
 public class AuthToken {
 
+    /**
+     * Método responsável para obter um novo token JWT
+     * @return Token JWT
+     */
     public static String getToken() {
         Map<String, Object> map = new HashMap<String, Object>();
         map.put("kid", UUID.randomUUID());
@@ -19,6 +26,11 @@ public class AuthToken {
                 compact();
     }
 
+    /**
+     * Método responsável para verificar se token é válido
+     * @param token Token a ser validado
+     * @return Booleano se é válido ou não
+     */
     public static Boolean checkToken(String token) {
         try {
             Jwts.parser().setSigningKey("SINGNATURE").parseClaimsJws(token);

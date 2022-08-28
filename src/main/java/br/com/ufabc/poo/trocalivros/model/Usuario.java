@@ -10,6 +10,9 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 
+/**
+ * Classe referente a entidade do Usuario
+ */
 @Entity
 public class Usuario {
     @Id

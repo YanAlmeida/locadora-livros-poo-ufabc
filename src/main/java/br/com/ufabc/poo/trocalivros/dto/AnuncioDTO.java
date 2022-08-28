@@ -12,7 +12,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 /**
- * 
+ * DTO referente ao objeto de anúncios
  */
 public class AnuncioDTO {
     @Getter private Long id;
@@ -25,12 +25,18 @@ public class AnuncioDTO {
 
     @Getter @Setter private String condition;
 
+    /**
+     * Lista de imagens referente ao anúncio
+     */
     @Getter @Setter private List<Imagem> imagens;
 
     @Getter @Setter private List<String> categorias;
 
     @Getter @Setter private String usuarioCriador;
 
+    /**
+     * Lista de usuários interessados pelo anúncio
+     */
     @Getter @Setter private List<UsuarioDTO> usuariosInteressados;
 
     @Getter @Setter private Boolean active;
@@ -50,6 +56,11 @@ public class AnuncioDTO {
         this.active = active;
     }
 
+    /**
+     * Método para converter a Entidade Anuncio para a DTO AnuncioDTO
+     * @param anuncio Entidade anuncio a ser convertida
+     * @return Objeto convertido para AnuncioDTO
+     */
     public static AnuncioDTO converterAnuncio(Anuncio anuncio){
         return new AnuncioDTO(anuncio.getId(), anuncio.getTitle(),
                 anuncio.getDescription(), anuncio.getPrice(),

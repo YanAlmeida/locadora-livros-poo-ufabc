@@ -9,6 +9,9 @@ import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Entidade referente aos Anuncios
+ */
 @Entity
 public class Anuncio {
     @Id
@@ -33,7 +36,7 @@ public class Anuncio {
 
     @Getter @Setter private String usuarioCriador;
 
-    @OneToMany(orphanRemoval = true, cascade = {CascadeType.ALL}, fetch = FetchType.LAZY)
+    @OneToMany(cascade = {CascadeType.ALL})
     @ElementCollection(targetClass = Usuario.class)
     @Getter @Setter private List<Usuario> usuariosInteressados;
 
