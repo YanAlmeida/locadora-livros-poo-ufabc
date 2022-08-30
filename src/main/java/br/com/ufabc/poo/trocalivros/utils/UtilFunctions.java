@@ -11,7 +11,7 @@ public class UtilFunctions {
     public static String encode_password(String password){
         try {
             MessageDigest md = MessageDigest.getInstance("SHA-512");
-            byte[] hashedPassword = md.digest(password.getBytes(StandardCharsets.UTF_8));
+        byte[] hashedPassword = md.digest(password.getBytes(StandardCharsets.UTF_8));
 
             return new String(hashedPassword);
         } catch (NoSuchAlgorithmException e) {
